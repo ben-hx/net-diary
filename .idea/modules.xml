@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/trashbay-webui.iml" filepath="$PROJECT_DIR$/trashbay-webui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netdiary-webui.iml" filepath="$PROJECT_DIR$/netdiary-webui.iml" />
     </modules>
   </component>
 </project>
