@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import { ThemeProvider as MuiThemProvider } from '@material-ui/styles';
-import StandardTheme from '../model/StandardTheme';
+import React, {Component} from 'react';
+import {ThemeProvider as MuiThemProvider} from '@material-ui/styles';
+import UglyTheme from '../model/uglyTheme/UglyTheme';
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 const withTheme = (WrappedComponent) => {
     class ThemeProvider extends Component {
 
         getCurrentTheme() {
-            return StandardTheme;
+            return UglyTheme;
         }
 
         render() {
             return (
                 <MuiThemProvider theme={this.getCurrentTheme()}>
-                    <CssBaseline />
+                    <CssBaseline/>
                     <WrappedComponent {...this.props} />
                 </MuiThemProvider>
             );
