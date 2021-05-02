@@ -5,7 +5,7 @@
       <paths name="ueberspace">
         <serverdata>
           <mappings>
-            <mapping deploy="/html/net-diary/net-diary-webui" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/html/net-diary/net-diary-webui" local="$PROJECT_DIR$/build" web="/" />
           </mappings>
         </serverdata>
       </paths>
