@@ -2,12 +2,14 @@ import React, {Component} from "react";
 import {withStyles, withTheme} from "@material-ui/styles";
 import MUIRichTextEditor from 'mui-rte';
 import SaveIcon from '@material-ui/icons/Save';
+import TitleIcon from '@material-ui/icons/Title';
 import {convertToRaw, EditorState} from 'draft-js'
 import clsx from "clsx";
 import {FormattedMessage} from "react-intl"
 import {Fab, Zoom} from "@material-ui/core";
 import compose from "../../../misc/compose";
 import withSnackbar from "../../../snackbar/provider/withSnackbar";
+import {isMobile} from "react-device-detect";
 
 const styles = (theme) => ({
     root: {},
@@ -15,17 +17,23 @@ const styles = (theme) => ({
         pointerEvents: 'none',
         opacity: 0.5
     },
-    fab: {
+    fabs: {
         position: 'absolute',
         bottom: theme.spacing(2),
         right: theme.spacing(2),
     },
+    fab: {
+        marginLeft: theme.spacing(1)
+    }
 });
 
 
 class DiaryInput extends Component {
 
     currentState = null;
+    state = {
+        toolbarIsVisible: !isMobile,
+    }
 
     /*
     we have to pass a new instance of an empty state,
@@ -49,8 +57,13 @@ class DiaryInput extends Component {
         onSave(convertedState);
     };
 
+    handleToggleToolbar = () => {
+        this.setState({toolbarIsVisible: !this.state.toolbarIsVisible})
+    };
+
     render() {
-        const {classes, theme, value, disabled, onSave} = this.props;
+        const {classes, value, theme, onSave, disabled} = this.props;
+        const {toolbarIsVisible} = this.state;
         const transitionDuration = {
             enter: theme.transitions.duration.enteringScreen,
             exit: theme.transitions.duration.leavingScreen,
@@ -60,6 +73,7 @@ class DiaryInput extends Component {
                 <MUIRichTextEditor
                     defaultValue={value || this.createEmptyState()}
                     label={<FormattedMessage id={'diary.input.placeholder'}/>}
+                    toolbar={toolbarIsVisible}
                     inlineToolbar={true}
                     onSave={onSave}
                     onChange={this.handleChange}
@@ -69,13 +83,22 @@ class DiaryInput extends Component {
                     timeout={transitionDuration}
                     unmountOnExit
                 >
-                    <Fab
-                        aria-label='Save'
-                        className={classes.fab}
-                        color='primary'
-                        onClick={this.handleSave}>
-                        <SaveIcon/>
-                    </Fab>
+                    <div className={classes.fabs}>
+                        {isMobile && <Fab
+                            className={classes.fab}
+                            aria-label='Enable/Disable TextBar'
+                            color={toolbarIsVisible ? 'primary' : 'inherit'}
+                            onClick={this.handleToggleToolbar}>
+                            <TitleIcon/>
+                        </Fab>}
+                        <Fab
+                            className={classes.fab}
+                            aria-label='Save'
+                            color='primary'
+                            onClick={this.handleSave}>
+                            <SaveIcon/>
+                        </Fab>
+                    </div>
                 </Zoom>
             </div>
         );
