@@ -281,8 +281,9 @@ class Home extends Component {
                         paper: classes.drawerPaper,
                     }}
                 >
-                    <div className={classes.drawerHeader}>
-                        <IconButton onClick={this.handleDrawerClose}>
+                    <div className={classes.drawerHeader}
+                         onClick={this.handleDrawerClose}>
+                        <IconButton>
                             {theme.direction === 'ltr' ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
                         </IconButton>
                     </div>
