@@ -60,6 +60,7 @@ const styles = (theme) => ({
     drawer: {
         width: drawerWidth,
         flexShrink: 0,
+        height: '100%'
     },
     drawerPaper: {
         width: drawerWidth,
