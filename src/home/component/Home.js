@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import clsx from 'clsx';
+import {isMobile} from 'react-device-detect';
 import {Link, Redirect} from "react-router-dom";
 import {withStyles, withTheme} from "@material-ui/styles";
 import {AppBar, Drawer} from "@material-ui/core";
@@ -72,6 +73,15 @@ const styles = (theme) => ({
         justifyContent: 'flex-end',
     },
     content: {
+        flexGrow: 1,
+        padding: theme.spacing(3),
+        transition: theme.transitions.create('margin', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+        marginLeft: -drawerWidth,
+    },
+    mobileContent: {
         flexGrow: 1,
         padding: theme.spacing(3),
         transition: theme.transitions.create('margin', {
@@ -279,7 +289,7 @@ class Home extends Component {
                     <Calendar value={entry.date} onChange={this.handleDateChange}/>
                 </Drawer>
                 <main
-                    className={clsx(classes.content, {
+                    className={isMobile ? clsx(classes.mobileContent) : clsx(classes.content, {
                         [classes.contentShift]: drawerIsOpen,
                     })}
                 >
