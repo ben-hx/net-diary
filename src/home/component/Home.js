@@ -131,12 +131,21 @@ class Home extends Component {
     }
 
     upsertEntry(value) {
+        const {home} = this.props;
         this.applyLoading(true);
-        return this.props.home.upsertEntry(value).then((data) => {
+        return home.upsertEntry(value).then((data) => {
             this.setState({entry: data});
-            this.props.snackbar.open(<FormattedMessage id={'save.success'}/>);
+            this.openSuccessSnackbar();
         }).finally(() => {
             this.applyLoading(false);
+        });
+    }
+
+    openSuccessSnackbar() {
+        const {snackbar} = this.props;
+        snackbar.open({
+            severity: "success",
+            message: <FormattedMessage id={'save.success'}/>
         });
     }
 

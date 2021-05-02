@@ -1,32 +1,31 @@
 import React, {Component} from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
-import CloseIcon from '@material-ui/icons/Close';
-import {IconButton} from "@material-ui/core";
+import {Alert} from "@material-ui/lab";
 
 const withSnackbar = (WrappedComponent) => {
     class SnackbarProvider extends Component {
 
         state = {
             open: false,
-            message: null
+            options: null
         }
 
         handleClose = () => {
             this.setState({
                 open: false,
-                message: null
+                options: null
             });
         };
 
-        handleOpen = (message) => {
+        handleOpen = (options) => {
             this.setState({
                 open: true,
-                message: message
+                options: options
             });
         };
 
         render() {
-            const {open, message} = this.state;
+            const {open, options} = this.state;
             const wrappedProps = {
                 ...this.props,
                 snackbar: {
@@ -44,19 +43,11 @@ const withSnackbar = (WrappedComponent) => {
                             horizontal: 'left',
                         }}
                         open={open}
-                        onClose={this.handleClose}
-                        message={message}
-                        action={
-                            <React.Fragment>
-                                <IconButton size="small"
-                                            aria-label="close"
-                                            color="inherit"
-                                            onClick={this.handleClose}>
-                                    <CloseIcon fontSize="small"/>
-                                </IconButton>
-                            </React.Fragment>
-                        }
-                    />
+                    >
+                        <Alert onClose={this.handleClose} severity={options?.severity}>
+                            {options?.message}
+                        </Alert>
+                    </Snackbar>
                 </React.Fragment>
             );
         }
