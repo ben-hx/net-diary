@@ -195,6 +195,9 @@ class Home extends Component {
         if (!hasChanged) {
             return;
         }
+        if (isMobile) {
+            this.handleDrawerClose();
+        }
         this.loadDate(date);
         this.setDateInPath(date);
     }
