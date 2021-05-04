@@ -51,9 +51,6 @@ const styles = (theme) => ({
     appBarTitle: {
         flexGrow: 1,
     },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
     hide: {
         display: 'none',
     },
@@ -75,6 +72,7 @@ const styles = (theme) => ({
     },
     content: {
         flexGrow: 1,
+        maxWidth: '100%',
         padding: theme.spacing(3),
         transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.sharp,
@@ -84,6 +82,7 @@ const styles = (theme) => ({
     },
     mobileContent: {
         flexGrow: 1,
+        maxWidth: '100%',
         padding: theme.spacing(3),
         transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.sharp,
@@ -254,7 +253,7 @@ class Home extends Component {
                             aria-label="open drawer"
                             onClick={this.handleDrawerOpen}
                             edge="start"
-                            className={clsx(classes.menuButton, drawerIsOpen && classes.hide)}
+                            className={drawerIsOpen && classes.hide}
                         >
                             <CalendarTodayIcon/>
                         </IconButton>

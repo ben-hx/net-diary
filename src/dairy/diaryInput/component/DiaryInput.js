@@ -12,7 +12,9 @@ import withSnackbar from "../../../snackbar/provider/withSnackbar";
 import {isMobile} from "react-device-detect";
 
 const styles = (theme) => ({
-    root: {},
+    root: {
+        maxHeight: '100%'
+    },
     disabled: {
         pointerEvents: 'none',
         opacity: 0.5
