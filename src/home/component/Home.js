@@ -233,7 +233,7 @@ class Home extends Component {
 
     render() {
         const {classes, theme, authentication} = this.props;
-        const {drawerIsOpen, entry} = this.state;
+        const {drawerIsOpen, entry, isLoading} = this.state;
 
         if (!authentication.isAuthenticated()) {
             return <Redirect to={Routes.login.root}/>;
@@ -299,6 +299,7 @@ class Home extends Component {
                 >
                     <div className={classes.drawerHeader}/>
                     <DiaryInput value={entry.value || null}
+                                isLoading={isLoading}
                                 onSave={this.handleEntryValueSave}/>
                 </main>
             </div>

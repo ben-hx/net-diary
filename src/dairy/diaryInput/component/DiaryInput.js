@@ -34,7 +34,7 @@ class DiaryInput extends Component {
 
     currentState = null;
     state = {
-        toolbarIsVisible: !isMobile,
+        toolbarIsVisible: !isMobile
     }
 
     /*
@@ -64,7 +64,7 @@ class DiaryInput extends Component {
     };
 
     render() {
-        const {classes, value, theme, onSave, disabled} = this.props;
+        const {classes, value, isLoading, theme, onSave, disabled} = this.props;
         const {toolbarIsVisible} = this.state;
         const transitionDuration = {
             enter: theme.transitions.duration.enteringScreen,
@@ -74,7 +74,8 @@ class DiaryInput extends Component {
             <div className={clsx(classes.root, disabled && classes.disabled)}>
                 <MUIRichTextEditor
                     defaultValue={value || this.createEmptyState()}
-                    label={<FormattedMessage id={'diary.input.placeholder'}/>}
+                    label={isLoading ? <FormattedMessage id={'diary.input.loading'}/> :
+                        <FormattedMessage id={'diary.input.placeholder'}/>}
                     toolbar={toolbarIsVisible}
                     inlineToolbar={true}
                     onSave={onSave}

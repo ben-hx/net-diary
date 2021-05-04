@@ -8,7 +8,8 @@ const messages = {
     'profile': 'Profil',
     'search': 'Suche',
     'diary.input.placeholder': 'Schreib irgend nen schmarn...',
-    'save.success': 'Erfolgreich gespeichert!'
+    'diary.input.loading': 'Es lodt du grippe!',
+    'save.success': 'Erfolgreich gespeichert!',
 };
 
 export default messages;

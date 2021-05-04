@@ -8,6 +8,7 @@ const messages = {
     'profile': 'Profile',
     'search': 'Search',
     'diary.input.placeholder': 'Type something here...',
+    'diary.input.loading': 'Loading...',
     'save.success': 'Successfully saved!'
 };
 
